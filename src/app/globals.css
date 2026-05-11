@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --rose-500: #C05070;
+  --navy-700: #1A2E4A;
+  --sage-500: #3A8060;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  background-color: #F9FAFB;
+  color: #111827;
+}

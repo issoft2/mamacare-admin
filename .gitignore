@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Python (shouldn't be here)
+.venv/
+__pycache__/
+*.pyc
+.python-version
+pyproject.toml
+uv.lock
+main.py
+
+# Environment files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+tsconfig.tsbuildinfo
+
+# Vercel
+.vercel/
+
+# Secrets
+credentials.json
+service-account*.json
+google-services.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
