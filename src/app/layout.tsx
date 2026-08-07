@@ -9,8 +9,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "MamaCare AI — Admin",
-  description: "MamaCare AI administration dashboard",
+  title: "Safeborn — Admin",
+  description: "Safeborn administration dashboard",
 };
 
 export default function RootLayout({

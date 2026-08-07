@@ -23,13 +23,13 @@
       "@/*": [
         "./src/*"
       ],
-      "@mamacare/types": [
+      "@safeborn/types": [
         "../packages/types/src/index.ts"
       ],
-      "@mamacare/api": [
+      "@safeborn/api": [
         "../packages/api/src/index.ts"
       ],
-      "@mamacare/ui": [
+      "@safeborn/ui": [
         "../packages/ui/src/index.ts"
       ]
     },

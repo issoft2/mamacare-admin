@@ -5,7 +5,7 @@
 
 "use client";
 
-import { ApiRequestError, useAgentActivity } from "@mamacare/api";
+import { ApiRequestError, useAgentActivity } from "@/lib/statsApi";
 import {
   Bar,
   BarChart,
