@@ -57,7 +57,7 @@ async function authedFetch<T>(path: string, token: string | null): Promise<T> {
     let message = `Request failed (${response.status})`;
     try {
       const body = await response.json();
-      message = body?.error?.message ?? message;
+      message = body?.detail?.error?.message ?? message;
     } catch {
       // response body wasn't JSON — keep the generic message
     }
