@@ -11,6 +11,8 @@ import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
   { label: "Dashboard", href: "/dashboard", enabled: true },
+  { label: "Clinical Review", href: "/dashboard/clinical-review", enabled: true },
+  { label: "Pathway Review", href: "/dashboard/pathway-review", enabled: true },
   { label: "Users", href: "/dashboard/users", enabled: false },
   { label: "Agent Runs", href: "/dashboard/agent-runs", enabled: false },
   { label: "Compliance", href: "/dashboard/compliance", enabled: false },
@@ -22,7 +24,7 @@ export function Sidebar() {
   return (
     <aside className="w-56 min-h-screen bg-navy-700 flex flex-col">
       <div className="px-6 py-6 border-b border-white/10">
-        <p className="text-white font-bold text-lg">MamaCare AI</p>
+        <p className="text-white font-bold text-lg">Safeborn</p>
         <p className="text-rose-200 text-xs mt-0.5">Admin Dashboard</p>
       </div>
 
@@ -47,6 +49,14 @@ export function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
+              // Dashboard's own components (DashboardMetrics/AgentRunsChart)
+              // fail to import @safeborn/api (see README.md) — Next's
+              // default background prefetch of this link was triggering
+              // that broken compile just from Sidebar being rendered,
+              // which then took down every other route sharing this
+              // layout group, including this one. prefetch={false} stops
+              // that; Dashboard still fails correctly if actually visited.
+              prefetch={item.href === "/dashboard" ? false : undefined}
               className={
                 active
                   ? `${base} bg-white/10 text-white`

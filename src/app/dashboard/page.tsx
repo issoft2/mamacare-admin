@@ -14,7 +14,7 @@ export default function DashboardPage() {
     <div className="p-8 space-y-8">
       <div>
         <h1 className="text-2xl font-bold text-navy-700">Dashboard</h1>
-        <p className="text-gray-500 mt-1">MamaCare AI platform overview</p>
+        <p className="text-gray-500 mt-1">Safeborn platform overview</p>
         <p className="text-sm text-gray-400 mt-2 max-w-2xl">
           Top cards load from{" "}
           <code className="text-gray-500">/data/stats/dashboard</code>; the chart below uses{" "}

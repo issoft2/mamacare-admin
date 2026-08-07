@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ApiRequestError, useDashboardStats } from "@mamacare/api";
+import { ApiRequestError, useDashboardStats } from "@/lib/statsApi";
 import { MetricCard } from "@/components/MetricCard";
 
 function fmt(n: number): string {

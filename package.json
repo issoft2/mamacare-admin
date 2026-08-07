@@ -15,9 +15,6 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.0.0",
-    "@mamacare/api": "workspace:*",
-    "@mamacare/types": "workspace:*",
-    "@mamacare/ui": "workspace:*",
     "@tanstack/react-query": "^5.40.0",
     "@tanstack/react-table": "^8.17.0",
     "next": "^15.2.3",
