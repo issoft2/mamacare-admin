@@ -26,6 +26,10 @@ export class ApiRequestError extends Error {
 
 export type ReviewState =
   | "awaiting_review"
+  // Her requested changes have been implemented and it is ready for her
+  // again. Distinct from stale_review, which means content she APPROVED
+  // was altered underneath her — opposite meaning, opposite tone.
+  | "changes_addressed"
   | "stale_review"
   | "changes_requested"
   | "approved_pending_deploy"
@@ -62,6 +66,9 @@ export interface PathwayListItem {
   rules_count: number;
   references: string[];
   content_hash: string;
+  /** Clinical area — "Labour", "Postpartum", … Derived server-side; never
+   *  stored in the reviewed YAML, so grouping cannot invalidate a sign-off. */
+  group: string;
   review_state: ReviewState;
   latest_review: PathwayReviewRecord | null;
 }

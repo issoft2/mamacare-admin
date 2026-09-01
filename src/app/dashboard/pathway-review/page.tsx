@@ -26,6 +26,10 @@ const STATE_STYLES: Record<ReviewState, { label: string; className: string }> = 
     label: "Awaiting review",
     className: "bg-gray-100 text-gray-700 border-gray-200",
   },
+  changes_addressed: {
+    label: "Your changes are in — ready to review",
+    className: "bg-indigo-100 text-indigo-800 border-indigo-200",
+  },
   stale_review: {
     label: "Needs re-review — file changed",
     className: "bg-amber-100 text-amber-800 border-amber-200",
@@ -43,6 +47,34 @@ const STATE_STYLES: Record<ReviewState, { label: string; className: string }> = 
     className: "bg-green-100 text-green-800 border-green-200",
   },
 };
+
+/**
+ * Group the queue by clinical area.
+ *
+ * Dr Peace asked for the labour files to be merged into one entry "for
+ * easier navigation" — five of the fifteen items are labour, spread across
+ * three directories. Grouping gives that without merging: the files stay
+ * independently approvable, their review histories stay attached to their
+ * own ids, and threshold constants stay visible (a merged rules+constants
+ * file renders no settings at all).
+ *
+ * "Other" sorts last so a newly added pathway with no mapping is obvious
+ * rather than buried.
+ */
+function groupByArea(items: PathwayListItem[]): [string, PathwayListItem[]][] {
+  const byArea = new Map<string, PathwayListItem[]>();
+  for (const item of items) {
+    const area = item.group || "Other";
+    const bucket = byArea.get(area);
+    if (bucket) bucket.push(item);
+    else byArea.set(area, [item]);
+  }
+  return [...byArea.entries()].sort(([a], [b]) => {
+    if (a === "Other") return 1;
+    if (b === "Other") return -1;
+    return a.localeCompare(b);
+  });
+}
 
 function StateBadge({ state }: { state: ReviewState }) {
   const style = STATE_STYLES[state];
@@ -130,9 +162,24 @@ export default function PathwayReviewPage() {
       )}
 
       {data && (
-        <div className="grid grid-cols-1 gap-4">
-          {data.items.map((item) => (
-            <PathwayRow key={item.pathway_id} item={item} />
+        <div className="flex flex-col gap-8">
+          {groupByArea(data.items).map(([area, items]) => (
+            <section key={area}>
+              <div className="flex items-baseline gap-3 mb-3">
+                <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-700">
+                  {area}
+                </h2>
+                <span className="text-xs text-gray-400">
+                  {items.length} {items.length === 1 ? "item" : "items"}
+                </span>
+                <div className="flex-1 border-b border-gray-200" />
+              </div>
+              <div className="grid grid-cols-1 gap-4">
+                {items.map((item) => (
+                  <PathwayRow key={item.pathway_id} item={item} />
+                ))}
+              </div>
+            </section>
           ))}
         </div>
       )}
