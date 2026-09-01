@@ -26,6 +26,10 @@ const STATE_STYLES: Record<ReviewState, { label: string; className: string }> = 
     label: "Awaiting review",
     className: "bg-gray-100 text-gray-700 border-gray-200",
   },
+  changes_addressed: {
+    label: "Your changes are in — ready to review",
+    className: "bg-indigo-100 text-indigo-800 border-indigo-200",
+  },
   stale_review: {
     label: "Needs re-review — file changed",
     className: "bg-amber-100 text-amber-800 border-amber-200",

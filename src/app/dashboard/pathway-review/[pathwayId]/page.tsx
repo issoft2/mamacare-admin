@@ -283,6 +283,17 @@ export default function PathwayDetailPage({
             </div>
           )}
 
+          {data.review_state === "changes_addressed" && (
+            <div className="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-4 text-sm text-indigo-900">
+              <p className="font-medium">The changes you asked for have been made</p>
+              <p className="mt-1 text-indigo-800">
+                This pathway has been updated since your last review. Your earlier
+                request is below for comparison — please read the current rules and
+                approve them, or ask for more changes.
+              </p>
+            </div>
+          )}
+
           {data.review_state === "stale_review" && (
             <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
               <p className="font-medium">This file changed since it was last reviewed</p>
