@@ -66,6 +66,9 @@ export interface PathwayListItem {
   rules_count: number;
   references: string[];
   content_hash: string;
+  /** Clinical area — "Labour", "Postpartum", … Derived server-side; never
+   *  stored in the reviewed YAML, so grouping cannot invalidate a sign-off. */
+  group: string;
   review_state: ReviewState;
   latest_review: PathwayReviewRecord | null;
 }
