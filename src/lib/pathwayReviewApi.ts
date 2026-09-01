@@ -26,6 +26,10 @@ export class ApiRequestError extends Error {
 
 export type ReviewState =
   | "awaiting_review"
+  // Her requested changes have been implemented and it is ready for her
+  // again. Distinct from stale_review, which means content she APPROVED
+  // was altered underneath her — opposite meaning, opposite tone.
+  | "changes_addressed"
   | "stale_review"
   | "changes_requested"
   | "approved_pending_deploy"
