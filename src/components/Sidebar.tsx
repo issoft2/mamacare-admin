@@ -13,6 +13,11 @@ const NAV_ITEMS = [
   { label: "Dashboard", href: "/dashboard", enabled: true },
   { label: "Clinical Review", href: "/dashboard/clinical-review", enabled: true },
   { label: "Pathway Review", href: "/dashboard/pathway-review", enabled: true },
+  {
+    label: "Interconception Content",
+    href: "/dashboard/interconception-content",
+    enabled: true,
+  },
   { label: "Users", href: "/dashboard/users", enabled: false },
   { label: "Agent Runs", href: "/dashboard/agent-runs", enabled: false },
   { label: "Compliance", href: "/dashboard/compliance", enabled: false },
